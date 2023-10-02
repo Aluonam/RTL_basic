@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event';
-import userForm from './UserForm';
 import UserForm from './UserForm';
 
 test('muestra dos entradas y un botón', ()=>{
@@ -18,3 +17,28 @@ test('muestra dos entradas y un botón', ()=>{
 
     
 });
+
+ 
+test("llama a onUserAdd cuando se envía el formulario", async () => {
+    // NOT THE BEST IMPLEMENTATION
+
+    // Try to render my component
+    render(<UserForm />);
+   
+    // Find the two inputs
+    const [nameInput, emailInput] = screen.getAllByRole("textbox");
+   
+    // Simulate typing in a name
+    await user.click(nameInput);
+    await user.keyboard("jane");
+   
+    // Simulate typing in an email
+    await user.click(emailInput);
+    await user.keyboard("jane@jane.com");
+   
+    // Find the button
+   
+    // Simulate clicking the button
+   
+    // Assertion to make sure 'onUserAdd' gets called with email/name
+  });

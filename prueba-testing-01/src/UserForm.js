@@ -11,7 +11,7 @@ function UserForm({ onUserAdd }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-testid="user-form">
       <div>
         <label>Name</label>
         <input value={name} onChange={(e) => setName(e.target.value)} />
