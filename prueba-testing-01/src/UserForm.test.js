@@ -13,8 +13,8 @@ test('muestra dos entradas y un botón', ()=>{
 
     // Assertion: lo que el compoennte debe hacer
     // Lo esperado que haga 
-    expect(inputs).toHaveLength(2);
-    expect(button).toBeInTheDocument();
+    expect(inputs).toHaveLength(2); // esperamos encontrar dos inputs
+    expect(button).toBeInTheDocument(); // esperamos encontrar un botón
 
     
 });
