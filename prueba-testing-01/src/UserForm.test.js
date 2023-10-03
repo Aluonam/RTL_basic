@@ -20,25 +20,38 @@ test('muestra dos entradas y un botón', ()=>{
 
  
 test("llama a onUserAdd cuando se envía el formulario", async () => {
+    
     // NOT THE BEST IMPLEMENTATION
+    // const argList = [];
+    // const callback = (...args)=>{
+    //     argList.push(args);
+    // }
+
+    const mock = jest.fn();
 
     // Try to render my component
-    render(<UserForm />);
+    render(<UserForm onUserAdd={mock}/>);
    
     // Find the two inputs
     const [nameInput, emailInput] = screen.getAllByRole("textbox");
    
     // Simulate typing in a name
-    await user.click(nameInput);
-    await user.keyboard("jane");
+    user.click(nameInput);
+    user.keyboard("jane"); // user.keyboard('{Enter}') la entrada de llaves del teclado del usuario simulará presionar la tecla Intro.
    
     // Simulate typing in an email
-    await user.click(emailInput);
-    await user.keyboard("jane@jane.com");
+    user.click(emailInput);
+    user.keyboard("jane@jane.com");
    
-    // Find the button
-   
+    // Find the button //Se usa from '@testing-library/user-event';
+    const button = screen.getByRole('button');
+
     // Simulate clicking the button
-   
+    user.click(button);;
+
     // Assertion to make sure 'onUserAdd' gets called with email/name
-  });
+    // expect(argList).toHaveLength(1);
+    // expect(argList[0][0]).toEqual({ name: 'jane', email: 'jane@jane.com'}) // si pusiera otro nombre daría error, eso verifica que lo estamos haciendo bien
+    expect(mock).toHaveBeenCalled();
+    expect(mock).toHaveBeenCalledWith({ name: 'jane',  email: 'jane@jane.com'})
+});

@@ -6,8 +6,9 @@ function UserForm({ onUserAdd }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    onUserAdd({ name, email });
+    console.log(onUserAdd)
+    onUserAdd({ name:name, email:email });
+    console.log("on user add props",onUserAdd)
   };
 
   return (
