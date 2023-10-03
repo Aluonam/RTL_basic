@@ -33,8 +33,14 @@ test("llama a onUserAdd cuando se envía el formulario", async () => {
     render(<UserForm onUserAdd={mock}/>);
    
     // Find the two inputs
-    const [nameInput, emailInput] = screen.getAllByRole("textbox");
-   
+    // const [nameInput, emailInput] = screen.getAllByRole("textbox");
+    const nameInput = screen.getByRole('textbox', {
+        name: /name/i,
+    })
+    const emailInput = screen.getByRole('textbox',{
+        name: /email/i,
+    })
+    
     // Simulate typing in a name
     user.click(nameInput);
     user.keyboard("jane"); // user.keyboard('{Enter}') la entrada de llaves del teclado del usuario simulará presionar la tecla Intro.
