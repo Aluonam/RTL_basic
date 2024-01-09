@@ -29,7 +29,7 @@ El comando que vamos a ejecutar es NPM run test.
 
 
 Queries:
-    - getByRole: This can be used to query every element that is exposed in the accessibility tree. getByRole('button', {name: /submit/i}).
+    - getByRole: This can be used to query every element that is exposed in the accessibility tree. getByRole('button', {name: /submit/i})
     
     - getByLabelText: This method is really good for form fields. When navigating through a website form, users find elements using label text. This method emulates that behavior, so it should be your top preference.
     
