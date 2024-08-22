@@ -25,3 +25,22 @@ test('render component and increment value', async ()=>{
 })
 
 
+//EJEMPLO CON ASYNC AWAIT con USEREVENT
+//Si usas userEvent directamente puede intentar verificar antes de que se haya actualizado
+test('renders Counter component and increments value', async () => {
+    render(<Counter />);
+  
+    // Encuentra el botón
+    const buttonIncrement = screen.getByRole('button', { name: '+' });
+  
+    // Verifica que el texto inicial del contador es '0'
+    expect(screen.getByText('0')).toBeInTheDocument();
+  
+    // Haz clic en el botón para sumar
+    userEvent.click(buttonIncrement);
+  
+    // Espera a que el texto se actualice y verifica que se ha incrementado
+    await waitFor(() => {
+      expect(screen.getByText('1')).toBeInTheDocument();
+    });
+  });
