@@ -24,6 +24,14 @@ test('render component and increment value', async ()=>{
     expect(screen.getByText('1')).toBeInTheDocument()
 })
 
+test('render component and decrement', ()=>{
+    render(<Counter></Counter>)
+    const buttonDecrement = screen.getByRole('button', {name:'-'})
+    expect(screen.getByText('0')).toBeInTheDocument()
+    fireEvent.click(buttonDecrement)
+    expect(screen.getByText('-1')).toBeInTheDocument()
+})
+
 
 //EJEMPLO CON ASYNC AWAIT con USEREVENT
 //Si usas userEvent directamente puede intentar verificar antes de que se haya actualizado
